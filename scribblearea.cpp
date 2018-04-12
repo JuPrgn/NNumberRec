@@ -227,7 +227,6 @@ void ScribbleArea::paintEvent(QPaintEvent *event)
 void ScribbleArea::resizeEvent(QResizeEvent *event)
 //! [15] //! [16]
 {
-    qDebug("Resize");
     if (width() > image.width() || height() > image.height()) {
         int newWidth = 16;
         int newHeight = 16;

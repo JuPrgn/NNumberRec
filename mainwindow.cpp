@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowTitle("NumberRec");
+
     mNNPath = "saved.tinn";
 
     mTrainingSetPath = "semeion.data";

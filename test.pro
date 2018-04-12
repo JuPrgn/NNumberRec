@@ -7,6 +7,7 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+qtHaveModule(printsupport): QT += printsupport
 
 TARGET = test
 TEMPLATE = app
@@ -27,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     Tinn.c \
-    numberrec.cpp
+    numberrec.cpp \
+    scribblearea.cpp
 
 HEADERS += \
         mainwindow.h \
     Tinn.h \
-    numberrec.h
+    numberrec.h \
+    scribblearea.h
 
 FORMS += \
         mainwindow.ui

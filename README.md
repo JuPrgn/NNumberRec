@@ -1,13 +1,12 @@
 # NNumberRec - Neural Network Number Recognition 
 
-This software can recognize hand written digits numbers using Neural Network from TINN library.
+This software can recognize hand written digits numbers using Neural Network from [TINN](https://github.com/glouw/tinn) library.
 
-This is a Qt graphical implementation based on TINN examples to play with NN on concrete cases.
+This is a Qt graphical implementation based on [TINN](https://github.com/glouw/tinn) examples to play with NN on concrete cases.
 
 
 **Work in progress**
 
----
 
 ## License
 

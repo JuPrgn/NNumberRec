@@ -4,12 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 qtHaveModule(printsupport): QT += printsupport
 
-TARGET = NumberRec
+TARGET = NNumberRec
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use

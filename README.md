@@ -8,7 +8,7 @@ This is a Qt graphical implementation based on [TINN](https://github.com/glouw/t
 **Work in progress**
 
 <p align="center">
-  <img src = "https://github.com/JuPrgn/NNumberRec/Capture.png" width=350>
+  <img src = "https://github.com/JuPrgn/NNumberRec/blob/master/Capture.PNG" width=500>
 </p>
 
 ## License

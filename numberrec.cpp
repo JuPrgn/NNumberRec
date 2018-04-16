@@ -167,7 +167,7 @@ QStringList NumberRec::Recognize(QString TrainingSetPath, QString NNPath)
     // Input and output size is harded coded here as machine learning
     // repositories usually don't include the input and output size in the data itself.
     const int nips = 256;
-    const int nops = 10;
+    const int nops = 0;
 
     // Load the training set.
     const Data data = build(TrainingSetPath.toStdString().c_str(), nips, nops);

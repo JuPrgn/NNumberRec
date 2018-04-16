@@ -5,6 +5,19 @@
 #include <QMainWindow>
 #include "numberrec.h"
 
+#include <QStringList>
+//#include <QtCharts/QChartView>
+//#include <QtCharts/QPieSeries>
+//#include <QtCharts/QPieSlice>
+
+#include <QtCharts/QChartView>
+#include <QtCharts/QStackedBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QLegend>
+#include <QtCharts/QBarCategoryAxis>
+
+QT_CHARTS_USE_NAMESPACE
+
 class ScribbleArea;
 
 namespace Ui {
@@ -35,6 +48,10 @@ private slots:
 
     void on_tbOpen_clicked();
 
+    void on_tbBrowseTrain_clicked();
+
+    void on_tbBrowseReco_clicked();
+
 private:
     Ui::MainWindow *ui;
     NumberRec *mNumberRec;
@@ -42,6 +59,12 @@ private:
     QString mRecoPath;
     QString mDrawPath;
     QString mNNPath;
+
+    QChart *mChart;
+    QList<QBarSet*> mListBarSet;
+    QBarSet *mSet;
+    QStackedBarSeries *mSeries;
+//    QPieSeries *mSeries;
 
     void createActions();
     void createMenus();

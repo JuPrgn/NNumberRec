@@ -11,20 +11,46 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setWindowTitle("NumberRec");
+    setWindowTitle("NNumberRec");
 
     mNNPath = "saved.tinn";
-
     mTrainingSetPath = "semeion.data";
     mRecoPath = "Scribble.txt";
     mDrawPath = "Drawing.txt";
     ui->leTrain->setText(mTrainingSetPath);
     ui->leReco->setText(mRecoPath);
 
-    //    fileName = QFileDialog::getOpenFileName(this,
-    //        tr("Open Image"), "C:/Users/Julien/Desktop/", tr("Image Files (*.txt)"));
-
     mNumberRec = new NumberRec;
+
+    mSet = new QBarSet("Results");
+    *mSet << 0 << 0 << 0 << 0 << 0 << 0 << 0 << 0 << 0 << 0;
+
+    mSeries = new QStackedBarSeries();
+    mSeries->append(mSet);
+
+    mChart = new QChart();
+    mChart->addSeries(mSeries);
+    //chart->setTitle("Simple stackedbarchart example");
+    mChart->setAnimationOptions(QChart::SeriesAnimations);
+
+    QStringList categories;
+    categories << "0" << "1" << "2" << "3" << "4" << "5" << "6" << "7" << "8" << "9";
+    QBarCategoryAxis *axis = new QBarCategoryAxis();
+    axis->append(categories);
+    mChart->createDefaultAxes();
+    mChart->setAxisX(axis, mSeries);
+
+    mChart->axisY()->setMin(0);
+    mChart->axisY()->setMax(1);
+
+    mChart->legend()->setVisible(false);
+    //mChart->legend()->setAlignment(Qt::AlignBottom);
+
+    QChartView *chartView = new QChartView(mChart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+    chartView->setFixedSize(300,300);
+
+    ui->layChart->addWidget(chartView);
 
     scribbleArea = new ScribbleArea;
     ui->hlScribble->addWidget(scribbleArea);
@@ -38,6 +64,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete mChart;
+    delete mSet;
+    delete mSeries;
+    delete scribbleArea;
     delete mNumberRec;
     delete ui;
 }
@@ -53,6 +83,7 @@ void MainWindow::on_pbTraining_clicked()
 void MainWindow::on_pbRecognition_clicked()
 {
     QStringList Result;
+
     if(ui->ckbDrawing->isChecked())
     {
         scribbleArea->saveImage(mDrawPath, 0);
@@ -60,8 +91,14 @@ void MainWindow::on_pbRecognition_clicked()
     }
     else
         Result = mNumberRec->Recognize(mRecoPath, mNNPath);
+
     for(QString Str : Result)
         ui->teResult->append(Str);
+
+    QStringList ResultReco = Result.at(1).split(" ", QString::SkipEmptyParts);
+
+    for(int i=0; i<ResultReco.size(); i++)
+        mSet->replace(i, ResultReco.at(i).toFloat());
 }
 
 //! [3]
@@ -185,4 +222,26 @@ void MainWindow::on_tbSave_clicked()
 void MainWindow::on_tbOpen_clicked()
 {
     openAct->triggered();
+}
+
+void MainWindow::on_tbBrowseTrain_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+                               tr("Open File"), QDir::currentPath());
+    if (!fileName.isEmpty())
+    {
+        mTrainingSetPath = fileName;
+        ui->leTrain->setText(mTrainingSetPath);
+    }
+}
+
+void MainWindow::on_tbBrowseReco_clicked()
+{
+    QString fileName = QFileDialog::getOpenFileName(this,
+                               tr("Open File"), QDir::currentPath());
+    if (!fileName.isEmpty())
+    {
+        mRecoPath = fileName;
+        ui->leReco->setText(mRecoPath);
+    }
 }

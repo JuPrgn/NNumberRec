@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
     createActions();
     createMenus();
 
-    resize(650, 500);
+    //resize(650, 500);
 }
 
 MainWindow::~MainWindow()
@@ -95,7 +95,7 @@ void MainWindow::on_pbRecognition_clicked()
     for(QString Str : Result)
         ui->teResult->append(Str);
 
-    QStringList ResultReco = Result.at(1).split(" ", QString::SkipEmptyParts);
+    QStringList ResultReco = Result.at(0).split(" ", QString::SkipEmptyParts);
 
     for(int i=0; i<ResultReco.size(); i++)
         mSet->replace(i, ResultReco.at(i).toFloat());

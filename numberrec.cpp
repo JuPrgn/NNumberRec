@@ -167,7 +167,7 @@ QStringList NumberRec::Recognize(QString TrainingSetPath, QString NNPath)
     // Input and output size is harded coded here as machine learning
     // repositories usually don't include the input and output size in the data itself.
     const int nips = 256;
-    const int nops = 0;
+    const int nops = 10; //TODO si nops = 0 => rien et sinon Invalid parameter passed to C runtime function.
 
     // Load the training set.
     const Data data = build(TrainingSetPath.toStdString().c_str(), nips, nops);
@@ -182,9 +182,9 @@ QStringList NumberRec::Recognize(QString TrainingSetPath, QString NNPath)
     const float* const tg = data.tg[0];
     const float* const pd = xtpredict(loaded, in);
     QString str;
-    for(int i = 0; i < data.nops; i++) { QString str2; str.append(str2.sprintf("%.3f ", (double) tg[i])); }
-    StrOut.append(str);
-    str.clear();
+//    for(int i = 0; i < data.nops; i++) { QString str2; str.append(str2.sprintf("%.3f ", (double) tg[i])); }
+//    StrOut.append(str);
+//    str.clear();
     for(int i = 0; i < data.nops; i++) { QString str2; str.append(str2.sprintf("%.3f ", (double) pd[i])); }
     StrOut.append(str);
 

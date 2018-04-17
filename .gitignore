@@ -1,6 +1,3 @@
-# Created by http://www.gitignore.io
-
-### Qt ###
 # C++ objects and libs
 
 *.slo
@@ -19,16 +16,24 @@
 /.qmake.stash
 *.pro.user
 *.pro.user.*
+*.qbs.user
+*.qbs.user.*
 *.moc
 moc_*.cpp
+moc_*.h
 qrc_*.cpp
 ui_*.h
 Makefile*
-*-build-*
+*build-*
 
 # QtCreator
 
 *.autosave
-*.Debug
-*.Release
-*.exe
+
+# QtCtreator Qml
+*.qmlproject.user
+*.qmlproject.user.*
+
+# QtCtreator CMake
+CMakeLists.txt.user*
+

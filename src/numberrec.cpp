@@ -179,7 +179,7 @@ QStringList NumberRec::Recognize(QString TrainingSetPath, QString NNPath)
     // Ideally, we would also load a testing set to make the prediction with,
     // but for the sake of brevity here we just reuse the training set from earlier.
     const float* const in = data.in[0];
-    const float* const tg = data.tg[0];
+//    const float* const tg = data.tg[0];
     const float* const pd = xtpredict(loaded, in);
     QString str;
 //    for(int i = 0; i < data.nops; i++) { QString str2; str.append(str2.sprintf("%.3f ", (double) tg[i])); }

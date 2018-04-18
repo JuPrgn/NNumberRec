@@ -6,9 +6,6 @@
 #include "numberrec.h"
 
 #include <QStringList>
-//#include <QtCharts/QChartView>
-//#include <QtCharts/QPieSeries>
-//#include <QtCharts/QPieSlice>
 
 #include <QtCharts/QChartView>
 #include <QtCharts/QStackedBarSeries>
@@ -64,7 +61,6 @@ private:
     QList<QBarSet*> mListBarSet;
     QBarSet *mSet;
     QStackedBarSeries *mSeries;
-//    QPieSeries *mSeries;
 
     void createActions();
     void createMenus();

@@ -23,19 +23,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += $$PWD/src/lib/TINN
+INCLUDEPATH += $$PWD/src
 
 SOURCES += \
-        main.cpp \
-        mainwindow.cpp \
-    Tinn.c \
-    numberrec.cpp \
-    scribblearea.cpp
+        src/main.cpp \
+        src/mainwindow.cpp \
+        src/lib/TINN/Tinn.c \
+        src/numberrec.cpp \
+        src/scribblearea.cpp
 
 HEADERS += \
-        mainwindow.h \
-    Tinn.h \
-    numberrec.h \
-    scribblearea.h
+        src/mainwindow.h \
+        src/lib/TINN/Tinn.h \
+        src/numberrec.h \
+        src/scribblearea.h
 
 FORMS += \
-        mainwindow.ui
+        src/mainwindow.ui

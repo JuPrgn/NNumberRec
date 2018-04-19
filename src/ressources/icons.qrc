@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/play.png</file>
+        <file>icons/color-click.png</file>
+        <file>icons/eye.png</file>
+        <file>icons/delete.png</file>
+        <file>icons/open.png</file>
+        <file>icons/trash.png</file>
+        <file>icons/search.png</file>
+        <file>icons/save.png</file>
+    </qresource>
+</RCC>

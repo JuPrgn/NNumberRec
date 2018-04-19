@@ -33,7 +33,7 @@ BarChartResult::BarChartResult(QWidget *parent) :
 
     QChartView *chartView = new QChartView(mChart);
     chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->setFixedSize(300,300);
+    chartView->setFixedSize(250,250);
 
     ui->layChart->addWidget(chartView);
 }

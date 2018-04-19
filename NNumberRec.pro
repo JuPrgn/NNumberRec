@@ -49,3 +49,6 @@ FORMS += \
     src/mainwindow.ui \
     src/plugins/scribble/scribblewidget.ui \
     src/plugins/barChartResult/barchartresult.ui
+
+RESOURCES += \
+    src/ressources/icons.qrc

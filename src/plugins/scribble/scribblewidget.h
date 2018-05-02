@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+const QString DEFAULT_DIR_SCRIBBLE_KEY("Scribble/default_dir_scribble");
+
 class ScribbleArea;
 
 namespace Ui {

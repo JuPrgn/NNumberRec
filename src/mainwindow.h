@@ -12,6 +12,10 @@ namespace Ui {
 class MainWindow;
 }
 
+//const QString DEFAULT_DIR_NN_KEY("NeuralNetwork/default_dir_nn");
+const QString DEFAULT_DIR_TRAIN_KEY("Training/default_dir_train");
+const QString DEFAULT_DIR_RECO_KEY("Recognition/default_dir_reco");
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

@@ -57,22 +57,32 @@ void ScribbleWidget::penWidth()
 
 bool ScribbleWidget::saveFile(const QByteArray &fileFormat)
 {
-    QString initialPath = QDir::currentPath() + "/Scribble" + ".txt";
+    QSettings settings("user.ini", QSettings::IniFormat);
+//    QString initialPath = QDir::currentPath() + "/Scribble" + ".txt";
+    QString initialPath = settings.value(DEFAULT_DIR_SCRIBBLE_KEY).toString();
     QString fileName = QFileDialog::getSaveFileName(this, tr("Save"),
                                initialPath, tr("All Files (*)"));
     if(fileName.isEmpty())
         return false;
-    else
-        return mScribbleArea->saveImage(fileName, fileFormat.constData());
+
+    // Update default path
+    settings.setValue(DEFAULT_DIR_SCRIBBLE_KEY, fileName);
+
+    return mScribbleArea->saveImage(fileName, fileFormat.constData());
 }
 
 bool ScribbleWidget::openFile(void)
 {
+    QSettings settings("user.ini", QSettings::IniFormat);
     QString fileName = QFileDialog::getOpenFileName(this,
-                               tr("Open File"), QDir::currentPath());
-    if(!fileName.isEmpty())
-        return openImage(fileName);
-    return false;
+                               tr("Open File"), settings.value(DEFAULT_DIR_SCRIBBLE_KEY).toString());
+    if(fileName.isEmpty())
+        return false;
+
+    // Update default path
+    settings.setValue(DEFAULT_DIR_SCRIBBLE_KEY, fileName);
+
+    return openImage(fileName);
 }
 
 void ScribbleWidget::on_tbClear_clicked()

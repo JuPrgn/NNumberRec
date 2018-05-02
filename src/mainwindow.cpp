@@ -7,17 +7,19 @@
 #include "scribblewidget.h"
 #include "barchartresult.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    QSettings settings("user.ini", QSettings::IniFormat);
     ui->setupUi(this);
 
     setWindowTitle("NNumberRec");
 
-    mNNPath = "saved.tinn";
-    mTrainingSetPath = "semeion.data";
-    mRecoPath = "Scribble.txt";
+    mNNPath = "saved.tinn";//settings.value(DEFAULT_DIR_NN_KEY).toString();
+    mTrainingSetPath = settings.value(DEFAULT_DIR_TRAIN_KEY).toString();//"semeion.data";
+    mRecoPath = settings.value(DEFAULT_DIR_RECO_KEY).toString();//"Scribble.txt";
     mDrawPath = "Drawing.txt";
     ui->leTrain->setText(mTrainingSetPath);
     ui->leReco->setText(mRecoPath);
@@ -74,23 +76,33 @@ void MainWindow::on_pbRecognition_clicked()
 
 void MainWindow::on_tbBrowseTrain_clicked()
 {
+    QSettings settings("user.ini", QSettings::IniFormat);
     QString fileName = QFileDialog::getOpenFileName(this,
-                               tr("Open File"), QDir::currentPath());
+                               tr("Open File"), settings.value(DEFAULT_DIR_TRAIN_KEY).toString());
     if (!fileName.isEmpty())
     {
-        mTrainingSetPath = fileName;
+        QDir dir(QDir::currentPath());
+        mTrainingSetPath = dir.relativeFilePath(fileName);
         ui->leTrain->setText(mTrainingSetPath);
+
+        // Update default path
+        settings.setValue(DEFAULT_DIR_TRAIN_KEY, fileName);
     }
 }
 
 void MainWindow::on_tbBrowseReco_clicked()
 {
+    QSettings settings("user.ini", QSettings::IniFormat);
     QString fileName = QFileDialog::getOpenFileName(this,
-                               tr("Open File"), QDir::currentPath());
+                               tr("Open File"), settings.value(DEFAULT_DIR_RECO_KEY).toString());
     if (!fileName.isEmpty())
     {
-        mRecoPath = fileName;
+        QDir dir(QDir::currentPath());
+        mRecoPath = dir.relativeFilePath(fileName);
         ui->leReco->setText(mRecoPath);
+
+        // Update default path
+        settings.setValue(DEFAULT_DIR_RECO_KEY, fileName);
     }
 }
 

@@ -4,10 +4,12 @@
 #include <QWidget>
 
 #include <QtCharts/QChartView>
-#include <QtCharts/QStackedBarSeries>
+//#include <QtCharts/QStackedBarSeries>
+#include <QtCharts/QHorizontalBarSeries>
 #include <QtCharts/QBarSet>
 #include <QtCharts/QLegend>
 #include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QValueAxis>
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -31,7 +33,8 @@ private:
     QChart *mChart;
     QList<QBarSet*> mListBarSet;
     QBarSet *mSet;
-    QStackedBarSeries *mSeries;
+//    QStackedBarSeries *mSeries;
+    QHorizontalBarSeries *mSeries;
 };
 
 #endif // BARCHARTRESULT_H

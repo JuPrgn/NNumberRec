@@ -51,4 +51,5 @@ FORMS += \
     src/plugins/barChartResult/barchartresult.ui
 
 RESOURCES += \
-    src/ressources/icons.qrc
+    src/ressources/icons.qrc \
+    src/ressources/img.qrc

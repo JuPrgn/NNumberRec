@@ -21,6 +21,13 @@ MainWindow::MainWindow(QWidget *parent) :
     mTrainingSetPath = settings.value(DEFAULT_DIR_TRAIN_KEY).toString();//"semeion.data";
     mRecoPath = settings.value(DEFAULT_DIR_RECO_KEY).toString();//"Scribble.txt";
     mDrawPath = "Drawing.txt";
+
+    QDir dir1(QDir::currentPath());
+    mTrainingSetPath = dir1.relativeFilePath(mTrainingSetPath);
+
+    QDir dir2(QDir::currentPath());
+    mRecoPath = dir2.relativeFilePath(mRecoPath);
+
     ui->leTrain->setText(mTrainingSetPath);
     ui->leReco->setText(mRecoPath);
 
@@ -31,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     mBarChartResult = new BarChartResult;
     ui->layChart->addWidget(mBarChartResult);
+
 
 //    createActions();
 //    createMenus();
